@@ -35,12 +35,12 @@ valid = []
 
 for i, s in enumerate(scores):
     try:
-        score = int(s)   
+        score = int(s) 
+        print(f'Score [{i}]: {score}')
+        valid.append(score)  
     except ValueError:
         print(f'The score: {scores[i]} was skipped due to a non-numerical value')
-
-    print(f'Score [{i}]: {score}')
-    valid.append(score)
+    
 
 print(f'Total of valid scores: {sum(valid)}')
 print(f'Count of valid scores: {len(valid)}')
