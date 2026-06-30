@@ -6,9 +6,9 @@
 # convert every reading to a float so we can compute the average.
 #
 # YOUR TASK (Task 2): Run this script and read the error.
-#   - What type of error is it?
-#   - Which line causes it?
-#   - Write a comment below explaining the cause.
+#   - What type of error is it? ValueError
+#   - Which line causes it? line 35
+#   - Write a comment below explaining the cause. 'N/A' can not be converted to a float
 #
 # YOUR TASK (Task 3): Wrap the risky conversion in try/except.
 #   - Catch the specific error type (not bare except:)
@@ -32,7 +32,11 @@ readings = ['72.1', '68.5', 'N/A', '74.0', 'sensor_error', '69.3']
 valid = []
 
 for i, r in enumerate(readings):
-    temp = float(r)           # <-- this line crashes on bad strings
+    try:
+        temp = float(r)           # <-- this line crashes on bad strings
+    except ValueError as e:
+        print('[index ', i, '] Skipped bad reading: \'', r, '\'', end='\n')
+        continue
     print(f'Reading [{i}]: {temp}')
     valid.append(temp)
 
