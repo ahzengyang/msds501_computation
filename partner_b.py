@@ -9,7 +9,8 @@
 #   - What type of error is it?
 #   - Which line causes it?
 #   - Write a comment below explaining the cause.
-#
+#This is a VALUE ERROR, The line causing it is line 36, and that cause is because we are attemtpting to convert non-numerical data 
+
 # YOUR TASK (Task 3): Wrap the risky conversion in try/except.
 #   - Catch the specific error type (not bare except:)
 #   - When a bad value is caught, print a message that includes
@@ -33,7 +34,11 @@ scores = ['88', '95', 'absent', '72', 'n/a', '84']
 valid = []
 
 for i, s in enumerate(scores):
-    score = int(s)            # <-- this line crashes on bad strings
+    try:
+        score = int(s)   
+    except ValueError:
+        print(f'The score: {scores[i]} was skipped due to a non-numerical value')
+
     print(f'Score [{i}]: {score}')
     valid.append(score)
 
